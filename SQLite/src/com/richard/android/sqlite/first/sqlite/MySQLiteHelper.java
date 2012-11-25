@@ -11,10 +11,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 	public static final String COLUMN_COMMENT = "comment";
 
 	private static final String DATABASE_NAME = "commments.db";
+
+	// Este numero debe cambiarse si se va a modificar cualquier parte de la base de datos
 	private static final int DATABASE_VERSION = 1;
 
-	// Database creation sql statement
-	private static final String DATABASE_CREATE = "create table "
+	// Sentencia de creacion de la tabla comments	
+	private static final String CREATE_TABLE_COMMENTS = "create table "
 			+ TABLE_COMMENTS + "(" + COLUMN_ID
 			+ " integer primary key autoincrement, " + COLUMN_COMMENT
 			+ " text not null);";
@@ -25,8 +27,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(DATABASE_CREATE);
-		
+		db.execSQL(CREATE_TABLE_COMMENTS);
 	}
 
 	@Override
@@ -37,7 +38,5 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 		    db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMENTS);
 		    onCreate(db);
 	}
-	
-	
 
 }
