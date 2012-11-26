@@ -21,4 +21,22 @@
         android:onClick="onButtonClick"
         android:text="@string/stop_service" />
 
+    <Button
+        android:id="@+id/btn_start_intent_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_stop_service"
+        android:onClick="onButtonClick"
+        android:text="@string/start_intent_service" />
+
+    <Button
+        android:id="@+id/btn_stop_intent_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_start_intent_service"
+        android:onClick="onButtonClick"
+        android:text="@string/stop_intent_service" />
+
 </RelativeLayout>

@@ -1,28 +1,32 @@
 package com.richard.service.services;
 
-import android.app.Service;
+import android.app.IntentService;
 import android.content.Intent;
 import android.os.Handler;
-import android.os.IBinder;
 import android.util.Log;
 
 /**
  * @author Richard Pablo
  */
-public class ServiceExample extends Service{
+public class IntentServiceExample extends IntentService{
+	
 	public static final String DELAY_TIME = "delayTime";
 	private int mDelayTime; //Milliseconds
 	private Handler mHandler;
 	
+	public IntentServiceExample() {
+		super("IntentServiceExample");
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		Log.w(getClass().getName(), "Service starts");
+	protected void onHandleIntent(Intent intent) {
+		Log.w(getClass().getName(), "IntentService starts");
 		mDelayTime = intent.getIntExtra(DELAY_TIME, 1000);
 		mHandler= new Handler();
 		start();
-		return START_NOT_STICKY;
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		stop();
@@ -34,9 +38,8 @@ public class ServiceExample extends Service{
 	
 	private void stop(){
 		mHandler.removeCallbacks(repetitiveTask);
-		Log.w(getClass().getName(), "Service stopped");
+		Log.w(getClass().getName(), "IntentService stopped");
 	}
-	
 	
 	Runnable repetitiveTask = new Runnable()
 	{
@@ -46,12 +49,4 @@ public class ServiceExample extends Service{
 	          mHandler.postDelayed(repetitiveTask, mDelayTime);
 	     }
 	};
-	
-
-	@Override
-	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 }
