@@ -23,6 +23,8 @@
         </activity>
         <service android:name=".services.ServiceExample"/>
         <service android:name=".services.IntentServiceExample"/>
+        <service android:name=".services.ServiceForScheduleExample"/>
+        
     </application>
 
 </manifest>

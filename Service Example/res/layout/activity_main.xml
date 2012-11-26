@@ -39,4 +39,40 @@
         android:onClick="onButtonClick"
         android:text="@string/stop_intent_service" />
 
+    <Button
+        android:id="@+id/btn_set_scheduled_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_stop_intent_service"
+        android:onClick="onButtonClick"
+        android:text="@string/set_scheduled_service" />
+
+    <Button
+        android:id="@+id/btn_cancel_scheduled_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_set_scheduled_service"
+        android:onClick="onButtonClick"
+        android:text="@string/cancel_scheduled_service" />
+
+    <Button
+        android:id="@+id/btn_set_scheduled_rep_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_cancel_scheduled_service"
+        android:onClick="onButtonClick"
+        android:text="@string/set_scheduled_repetitive_service" />
+
+    <Button
+        android:id="@+id/btn_cancel_scheduled_rep_service"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_set_scheduled_rep_service"
+        android:onClick="onButtonClick"
+        android:text="@string/cancel_scheduled_repetitive_service" />
+
 </RelativeLayout>
