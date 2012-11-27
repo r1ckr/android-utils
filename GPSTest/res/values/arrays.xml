@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="refresh_time">
+        <item>1 Seg</item>
+        <item>5 Seg</item>
+        <item>10 Seg</item>
+        <item>20 Seg</item>
+        <item>30 Seg</item>
+        <item>1 Min</item>
+        <item>2 Min</item>
+    </string-array>
+
+    <string-array name="refresh_clauses">
+        <item>1000</item>
+        <item>5000</item>
+        <item>10000</item>
+        <item>20000</item>
+        <item>30000</item>
+        <item>60000</item>
+        <item>120000</item>
+    </string-array>
+    
+</resources>

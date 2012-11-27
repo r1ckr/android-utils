@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, GPSTest!</string>
+    <string name="app_name">GPSTest</string>
+    <string name="lat">Latitude: </string>
+    <string name="lon">Longitude: </string>
+    <string name="vel">Speed: </string>
+    <string name="acu">Presition: </string>
+    <string name="trcking_on">Tracking Activated</string>
+	<string name="tracking_off">Tracking Deactivated</string>
+	<string name="preferences">Preferences</string>
+	<string name="on">ON</string>
+	<string name="off">OFF</string>
+	<string name="gps">GPS</string>
+	<string name="net">NET</string>
+	
+	<string name="refresh_preference_title">Refresh Time</string>
+	<string name="refresh_preference_summary">Select the time to refresh the location</string>
+	<string name="refresh_preference_dialog_title">Select the refresh time</string>
+	
+</resources>
