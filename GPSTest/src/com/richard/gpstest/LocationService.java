@@ -22,15 +22,15 @@ import android.provider.Settings;
  *   en esta clase
  */
 
-/**
- * @author Richard
- * */
+
 public class LocationService {
-	
-	boolean gps_enabled=false;
+
+    private static final int TWO_MINUTES = 1000 * 60 * 2;
+
+    boolean gps_enabled=false;
     boolean network_enabled=false;
     LocationManager mLocationManager;
-    LocationResult locationResult;
+    LocationResult mLocationResult;
     Location mCurrentBestLocation=null;
     Long mRefreshTime;
     Float mMinAccuracy;
@@ -48,7 +48,7 @@ public class LocationService {
     	mMinAccuracy=minAccuracy.floatValue();
     	mRefreshTime=refreshTime.longValue();
         //I use LocationResult callback class to pass location value from MyLocation to user code.
-        locationResult=result;
+        mLocationResult=result;
         if(mLocationManager==null)
         	mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         
@@ -71,7 +71,7 @@ public class LocationService {
         public void onLocationChanged(Location location) {
         	if (location.getAccuracy()<=mMinAccuracy){
 	        	if (isBetterLocation(location, mCurrentBestLocation)){
-	        		locationResult.gotLocation(location, LocationManager.GPS_PROVIDER);
+	        		mLocationResult.gotLocation(location, LocationManager.GPS_PROVIDER);
 	        	}
         	}
         }
@@ -84,7 +84,7 @@ public class LocationService {
         public void onLocationChanged(Location location) {
         	if (location.getAccuracy()<=mMinAccuracy){
         		if (isBetterLocation(location, mCurrentBestLocation)){
-            		locationResult.gotLocation(location, LocationManager.NETWORK_PROVIDER);
+            		mLocationResult.gotLocation(location, LocationManager.NETWORK_PROVIDER);
             	}
         	}
         	
@@ -99,8 +99,6 @@ public class LocationService {
     	mLocationManager.removeUpdates(locationListenerGps);
     }
     
-    
-    private static final int TWO_MINUTES = 1000 * 60 * 2;
 
     /** Determines whether one Location reading is better than the current Location fix
       * @param location  The new Location that you want to evaluate
