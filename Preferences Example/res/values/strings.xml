@@ -11,7 +11,7 @@
     <string name="text">Text Value: </string>
     <string name="list">List Value: </string>
     <string name="preffiled_list">Prefilled List Value: </string>
-    <string name="text_to_save">"Saved Text Value: "</string>
+    <string name="hidden_pref_value">Hidden Preference Value: </string>
 
     <string name="preferences1_title">Preferences 1 Title</string>
     <string name="preferences1_summary">Preferences 1 Summary</string>

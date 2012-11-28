@@ -24,7 +24,7 @@ public class PrefExample extends Activity {
 	private TextView mList = null;
 	private TextView mPrefilledList = null;
 	private EditText mEditText;
-	private String mSavedText;
+	SharedPreferences mPrefs;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,39 +39,35 @@ public class PrefExample extends Activity {
 		mPrefilledList=(TextView)findViewById(R.id.prefilled_list);
 		mEditText=(EditText) findViewById(R.id.text_to_save);
 		
-		//En el savedInstanceState se guarda el bundle de esta actividad si se ha 
-        //puesto en background, asi que de ahi volvemos a coger el KEY_ROWID
-			
-		if (savedInstanceState==null){
-        	mSavedText = "";
-        }else{
-        	mSavedText= savedInstanceState.getString(STRING_1);
-        }
-
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
 
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-		mCheckbox.setText(((Boolean) prefs.getBoolean("prefs1_checkbox", false)).toString());
-		mRingtone.setText(prefs.getString("prefs1_ringtone", "<unset>"));
-		mCheckbox2.setText(((Boolean) prefs.getBoolean("prefs2_checkbox", false)).toString());
-		mText.setText(prefs.getString("prefs1_text", "<unset>"));
-		mList.setText(prefs.getString("prefs1_list", "<unset>"));
-		mPrefilledList.setText(prefs.getString("prefs2_list", "<unset>"));
-		mEditText.setText(mSavedText);
+		mCheckbox.setText(((Boolean) mPrefs.getBoolean("prefs1_checkbox", false)).toString());
+		mRingtone.setText(mPrefs.getString("prefs1_ringtone", "<unset>"));
+		mCheckbox2.setText(((Boolean) mPrefs.getBoolean("prefs2_checkbox", false)).toString());
+		mText.setText(mPrefs.getString("prefs1_text", "<unset>"));
+		mList.setText(mPrefs.getString("prefs1_list", "<unset>"));
+		mPrefilledList.setText(mPrefs.getString("prefs2_list", "<unset>"));
+		mEditText.setText(mPrefs.getString("hidden_preference", "<unset>"));
 	}
 	
+	
+
 	@Override
-    protected void onSaveInstanceState(Bundle outState) {
-		/*Aqui vamos a salvar lo que queramos volver a tener si se mata la aplicacion, 
-		este médoto no es llamado cuando se presiona el back button*/
-		outState.putString(STRING_1, mEditText.getText().toString());
-		super.onSaveInstanceState(outState);
+	protected void onPause() {
+		String text=mEditText.getText().toString();
 		
+		// Salvamos el texto del EditText en una preferencia oculta, para luego llamarla
+		SharedPreferences.Editor editor = mPrefs.edit();
+	    editor.putString("hidden_preference", text);
+	    editor.commit(); // Importante!!
+	    
+		super.onPause();
 	}
 
 	@Override

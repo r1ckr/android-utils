@@ -59,7 +59,7 @@
 	
 	<TableRow>
 
-		<TextView android:text="@string/text_to_save" />
+		<TextView android:text="@string/hidden_pref_value" />
 
 		<EditText
 			android:id="@+id/text_to_save"
