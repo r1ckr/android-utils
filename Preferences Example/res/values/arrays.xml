@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <string-array name="currencies">
+    <item>Euro</item>
+    <item>Dollar</item>
+    <item>Pound Sterling</item>
+    <item>Japan Yen</item>
+    <item>Brasil Real</item>
+    <item>Canadian Dollar</item>
+  </string-array>
+  
+  <string-array name="iso_codes">
+    <item>EUR</item>
+    <item>USD</item>
+    <item>GBP</item>
+    <item>JPY</item>
+    <item>BRL</item>
+    <item>CAD</item>
+  </string-array>
+</resources>

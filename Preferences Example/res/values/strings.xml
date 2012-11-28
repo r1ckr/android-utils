@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Preferences Example</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+	
+    <string name="checkbox">Checkbox Value: </string>
+    <string name="ringtone">Ringtone Value: </string>
+    <string name="checkbox2">Checkbox2 Value: </string>
+    <string name="text">Text Value: </string>
+    <string name="list">List Value: </string>
+    <string name="preffiled_list">Prefilled List Value: </string>
+    <string name="text_to_save">"Saved Text Value: "</string>
+
+    <string name="preferences1_title">Preferences 1 Title</string>
+    <string name="preferences1_summary">Preferences 1 Summary</string>
+    <string name="preferences2_title">Preferences 2 Title</string>
+    <string name="preferences2_summary">Preferences 2 Summary</string>
+    
+    <string name="prefs1_pref1_title">CheckBoxPreference</string>
+    <string name="prefs1_pref1_summary">CheckBoxPreference summary</string>
+	<string name="prefs1_pref2_title">RingtonePreference</string>
+    <string name="prefs1_pref2_summary">RingtonePreference summary</string>
+    
+    <string name="prefs1_pref3_title">EditTextPreference</string>
+    <string name="prefs1_pref3_summary">EditTextPreference summary</string>
+    <string name="prefs1_pref3_dialogtitle">EditTextPreference Dialog Title</string>
+    
+    <string name="prefs1_pref4_title">ListPreference</string>
+    <string name="prefs1_pref4_summary">ListPreference summary</string>
+    <string name="prefs1_pref4_dialogtitle">ListPreference Dialog Title</string>
+    
+    <string name="prefs2_pref1_title">CheckBoxPreference 2</string>
+    <string name="prefs2_pref1_summary">CheckBoxPreference 2 summary</string>
+    
+    <string name="prefs2_pref2_title">ListPreference Prefilled</string>
+    <string name="prefs2_pref2_summary">ListPreference Prefilled summary</string>
+    <string name="prefs2_pref2_dialogtitle">ListPreference Prefilled Dialog Title</string>
+    
+    
+</resources>

@@ -1,0 +1,14 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<CheckBoxPreference
+		android:key="prefs2_checkbox"
+		android:title="@string/prefs2_pref1_title"
+		android:summary="@string/prefs2_pref1_summary"/>
+	
+	<ListPreference
+		android:key="prefs2_list"
+		android:title="@string/prefs2_pref2_title"
+		android:summary="@string/prefs2_pref2_summary"
+		android:dialogTitle="@string/prefs2_pref2_dialogtitle"/>
+
+</PreferenceScreen>
