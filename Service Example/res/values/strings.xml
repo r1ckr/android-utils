@@ -11,5 +11,6 @@
     <string name="cancel_scheduled_service">Cancel Scheduled Service</string>
     <string name="set_scheduled_repetitive_service">Set Scheduled Repetitive Service</string>
     <string name="cancel_scheduled_repetitive_service">Cancel Scheduled Repetitive Service</string>
+    <string name="start_service_for_result">Start Service For Result</string>
 
 </resources>

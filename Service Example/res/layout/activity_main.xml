@@ -75,4 +75,13 @@
         android:onClick="onButtonClick"
         android:text="@string/cancel_scheduled_repetitive_service" />
 
+    <Button
+        android:id="@+id/btn_start_service_for_result"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_cancel_scheduled_rep_service"
+        android:onClick="onButtonClick"
+        android:text="@string/start_service_for_result" />
+
 </RelativeLayout>

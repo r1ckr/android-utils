@@ -5,7 +5,10 @@ import java.util.Calendar;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -14,6 +17,7 @@ import android.widget.Toast;
 import com.richard.service.R;
 import com.richard.service.services.IntentServiceExample;
 import com.richard.service.services.ServiceExample;
+import com.richard.service.services.ServiceForResultExample;
 import com.richard.service.services.ServiceForScheduleExample;
 
 /**
@@ -51,6 +55,24 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    
+    
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		IntentFilter intentFilter = new IntentFilter(ServiceForResultExample.ACTION_COMPLETE);
+		registerReceiver(onEvent, intentFilter);
+	}
+	
+	private BroadcastReceiver onEvent=new BroadcastReceiver() {
+	    public void onReceive(Context ctxt, Intent i) {
+
+	      Toast.makeText(getApplicationContext(), "Service for result finished",
+	                     Toast.LENGTH_LONG).show();
+	    }
+	  };
+
 	public void onButtonClick(View v) {
 		
 		Intent serviceIntent = new Intent(this, ServiceExample.class);
@@ -128,7 +150,15 @@ public class MainActivity extends Activity {
 			alarmManager = (AlarmManager)getSystemService(ALARM_SERVICE);
 			alarmManager.cancel(mRepetitivePendingIntent);
 			break;
+			
+		case R.id.btn_start_service_for_result:
+			
+			Toast.makeText(this, "Starting Service For Result", Toast.LENGTH_SHORT).show();
+			
+			Intent i=new Intent(this, ServiceForResultExample.class);
 
+		    startService(i);
+			break;
 		default:
 			break;
 		}
