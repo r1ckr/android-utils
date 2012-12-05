@@ -14,12 +14,30 @@
         android:text="New Notification" />
 
     <Button
-        android:id="@+id/btn_update_notification"
+        android:id="@+id/btn_add_old_notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/btn_add_simple_notification"
         android:onClick="onClick"
+        android:text="New Old Notification" />
+
+    <Button
+        android:id="@+id/btn_update_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_add_old_notification"
+        android:onClick="onClick"
         android:text="Update Notification" />
+
+    <Button
+        android:id="@+id/btn_add_selected_notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/btn_update_notification"
+        android:onClick="onClick"
+        android:text="New Selected Notification" />
 
 </RelativeLayout>
