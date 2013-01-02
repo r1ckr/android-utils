@@ -32,13 +32,6 @@ public class MainActivity extends Activity {
 		mEtUrl = (EditText) findViewById(R.id.et_url);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
-	}
 	
 	public void onClick(View v){
 		String uri = mEtUrl.getText().toString();
@@ -89,6 +82,12 @@ public class MainActivity extends Activity {
 	     }
 
 	 }
-	
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.activity_main, menu);
+		return true;
+	}	
 	
 }
