@@ -1,25 +1,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity" >
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_url"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:onClick="onClick"
-        android:text="Download Image" />
+        android:ems="10"
+        android:inputType="textUri"
+        android:text="@string/url" >
 
-    <ImageView
-        android:id="@+id/img_downloaded"
-        android:layout_width="wrap_content"
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btn_download"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/et_url"
+        android:onClick="onClick"
+        android:text="@string/download_image" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/button1"
-        android:src="@drawable/ic_launcher" />
+        android:layout_below="@+id/btn_download"
+        android:background="@drawable/my_border" >
+
+        <ImageView
+            android:id="@+id/img_downloaded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_margin="2dp" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:visibility="invisible" />
+
+    </FrameLayout>
 
 </RelativeLayout>

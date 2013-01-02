@@ -13,17 +13,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 public class MainActivity extends Activity {
 	
-	ImageView imgDownloaded;
-	Bitmap bmImg;
+	ImageView mImgDownloaded;
+	Bitmap mBitmap;
+	EditText mEtUrl;
+	ProgressBar mProgressBar;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		imgDownloaded = (ImageView) findViewById(R.id.img_downloaded);
+		mImgDownloaded = (ImageView) findViewById(R.id.img_downloaded);
+		mEtUrl = (EditText) findViewById(R.id.et_url);
+		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
 	}
 
 	@Override
@@ -34,13 +41,21 @@ public class MainActivity extends Activity {
 	}
 	
 	public void onClick(View v){
-		new DownloadImageTask().execute("http://chart.finance.yahoo.com/z?s=EURUSD=X");
+		String uri = mEtUrl.getText().toString();
+		new DownloadImageTask().execute(uri);
 	}
 
 	private class DownloadImageTask extends AsyncTask<String, Integer, Bitmap> {
-
+		
+		@Override
+		protected void onPreExecute() {
+			mProgressBar.setVisibility(View.VISIBLE);
+			super.onPreExecute();
+		}
+		
 		@Override
 		protected Bitmap doInBackground(String... params) {
+			
 			URL myFileUrl =null;          
 			String myUrl= params[0];
 	        try {
@@ -69,8 +84,10 @@ public class MainActivity extends Activity {
 	     }
 
 	     protected void onPostExecute(Bitmap result) {
-	    	 imgDownloaded.setImageBitmap(result);
+	    	 mProgressBar.setVisibility(View.INVISIBLE);
+	    	 mImgDownloaded.setImageBitmap(result);
 	     }
+
 	 }
 	
 	

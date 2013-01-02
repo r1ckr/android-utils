@@ -4,5 +4,8 @@
     <string name="app_name">Image Example</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="download_image">Download Image</string>
+    <string name="url">"http://chart.finance.yahoo.com/z?s=EURUSD=X"</string>
+    
 
 </resources>
