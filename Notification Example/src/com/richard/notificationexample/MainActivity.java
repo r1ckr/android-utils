@@ -56,10 +56,10 @@ public class MainActivity extends Activity {
 			// Here we use the Id to update the notification
 			break;
 		case R.id.btn_add_selected_notification:
-			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB){
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN){
 				buildOldNotification("My Simple notification", "Hi! this is an old notification!!");
 			}else{
-				buildNotificationForHoney("My Simple notification", "Hi! this is an old notification only for Honeycomb and beyond versions!!");
+				buildNotificationForJelly("My Simple notification", "Hi! this is an old notification only for Honeycomb and beyond versions!!");
 			}
 			break;
 		default:
@@ -96,7 +96,7 @@ public class MainActivity extends Activity {
 		mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
 	}
 	
-	private void buildNotificationForHoney(String title, String content){
+	private void buildNotificationForJelly(String title, String content){
 		
 		mBuilderHoney = new Notification.Builder(this)
 		        .setSmallIcon(R.drawable.ic_launcher)
@@ -128,9 +128,9 @@ public class MainActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	private void buildOldNotification(String title, String content){
 
-        Notification notification = new Notification(R.drawable.ic_launcher,
-        		content, System
-                        .currentTimeMillis());
+        Notification notification = new Notification();
+        notification.icon=R.drawable.ic_launcher;
+        notification.when=System.currentTimeMillis();
         // The PendingIntent will launch activity if the user selects this
         // notification
         PendingIntent contentIntent = PendingIntent.getActivity(this,
