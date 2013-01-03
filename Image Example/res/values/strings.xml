@@ -6,6 +6,7 @@
     <string name="menu_settings">Settings</string>
     <string name="download_image">Download Image</string>
     <string name="url">"http://chart.finance.yahoo.com/z?s=EURUSD=X"</string>
+    <string name="change_opacity">Change Opacity</string>
     
 
 </resources>

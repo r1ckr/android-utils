@@ -10,9 +10,11 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -23,6 +25,7 @@ public class MainActivity extends Activity {
 	Bitmap mBitmap;
 	EditText mEtUrl;
 	ProgressBar mProgressBar;
+	Button mBtnOpaque;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +34,25 @@ public class MainActivity extends Activity {
 		mImgDownloaded = (ImageView) findViewById(R.id.img_downloaded);
 		mEtUrl = (EditText) findViewById(R.id.et_url);
 		mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+		mBtnOpaque = (Button) findViewById(R.id.btn_change_opaque);
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void onClick(View v){
-		String uri = mEtUrl.getText().toString();
-		new DownloadImageTask().execute(uri);
+		switch (v.getId()) {
+		case R.id.btn_download:
+			String uri = mEtUrl.getText().toString();
+			new DownloadImageTask().execute(uri);
+			break;
+		case R.id.btn_change_opaque:
+			if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN){
+				mImgDownloaded.setAlpha(100);
+			}else {
+				mImgDownloaded.setImageAlpha(100);
+			}
+			break;
+		}
+		
 	}
 
 	private class DownloadImageTask extends AsyncTask<String, Integer, Bitmap> {
@@ -79,6 +96,7 @@ public class MainActivity extends Activity {
 	     protected void onPostExecute(Bitmap result) {
 	    	 mProgressBar.setVisibility(View.INVISIBLE);
 	    	 mImgDownloaded.setImageBitmap(result);
+	    	 mBtnOpaque.setEnabled(true);
 	     }
 
 	 }

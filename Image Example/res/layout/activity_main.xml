@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_layout"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     tools:context=".MainActivity" >
@@ -26,6 +27,7 @@
         android:text="@string/download_image" />
 
     <FrameLayout
+        android:id="@+id/frameLayout1"
         android:layout_width="fill_parent"
         android:layout_height="200dp"
         android:layout_alignParentLeft="true"
@@ -45,7 +47,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|center_horizontal"
             android:visibility="invisible" />
-
     </FrameLayout>
+
+    <Button
+        android:id="@+id/btn_change_opaque"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/frameLayout1"
+        android:enabled="false"
+        android:onClick="onClick"
+        android:text="@string/change_opacity" />
 
 </RelativeLayout>
