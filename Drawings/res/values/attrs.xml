@@ -20,6 +20,7 @@
     <declare-styleable name="MyView">
         <attr name="startColor" format="color" />
         <attr name="endColor" format="color" />
+        <attr name="shadowColor" format="color" />
         <attr name="leftText" format="string" />
         <attr name="variableText" format="string" />
         <attr name="rightText" format="string" />

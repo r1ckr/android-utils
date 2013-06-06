@@ -8,10 +8,14 @@
         
     	<com.rickrsoft.drawings.views.MyView
     	    android:layout_width="wrap_content"
-    	    android:layout_height="wrap_content"
+    	    android:layout_height="30dp"
+    	    android:layout_marginTop="20dp"
+    	    custom:endColor="@android:color/holo_green_light"
     	    custom:leftText="Texto Izquierda"
     	    custom:rightText="Texto Derecha"
-    	    custom:variableText="Texto Variable"/>
+    	    custom:startColor="@android:color/holo_red_light"
+    	    custom:variableText="Texto Variable" />
+
    <!--  <com.rickrsoft.drawings.views.PieChart
             android:id="@+id/Pie"
             android:layout_width="match_parent"
