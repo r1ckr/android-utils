@@ -1,22 +1,23 @@
-<LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:custom="http://schemas.android.com/apk/res/com.rickrsoft.drawings"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-        
-    	<com.rickrsoft.drawings.views.MyView
-    	    android:layout_width="wrap_content"
-    	    android:layout_height="30dp"
-    	    android:layout_marginTop="20dp"
-    	    custom:endColor="@android:color/holo_green_light"
-    	    custom:leftText="Texto Izquierda"
-    	    custom:rightText="Texto Derecha"
-    	    custom:startColor="@android:color/holo_red_light"
-    	    custom:variableText="Texto Variable" />
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.rickrsoft.drawings"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:measureWithLargestChild="true"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle" >
 
-   <!--  <com.rickrsoft.drawings.views.PieChart
+    <com.rickrsoft.drawings.views.MyView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        custom:endColor="#00FF00"
+        custom:leftText="Texto Izquierda"
+        custom:rightText="Texto Derecha"
+        custom:startColor="@android:color/holo_green_dark"
+        custom:variableText="Texto Variable" />
+
+    <!--
+         <com.rickrsoft.drawings.views.PieChart
             android:id="@+id/Pie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,11 +34,38 @@
             custom:labelColor="@android:color/black"
             custom:autoCenterPointerInSlice="true"
             custom:pointerRadius="4dp"
-            /> -->
-    <Button
-            android:id="@+id/Reset"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/reset_button"
             />
+    -->
+
+    <Button
+        android:id="@+id/Reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_button" />
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="30"
+        android:progressDrawable="@drawable/layer_list_progressbar"
+        android:secondaryProgress="40" />
+
+    <com.rickrsoft.drawings.views.SaundProgressBar
+        android:id="@+id/regularprogressbar"
+        style="@style/Widget.ProgressBar.RegularProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip"
+        android:progress="40" />
+
+    <com.rickrsoft.drawings.views.SaundProgressBar
+        android:id="@+id/miniprogressbar"
+        style="@style/Widget.ProgressBar.MiniProgressBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dip"
+        android:progress="40" />
+
 </LinearLayout>

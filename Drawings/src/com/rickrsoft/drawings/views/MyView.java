@@ -10,9 +10,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.RadialGradient;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.drawable.GradientDrawable;
+import android.graphics.Shader.TileMode;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -27,8 +28,10 @@ public class MyView extends View{
 	private String mVariableText;
 	private Paint mPaint;
 	LinearGradient mGradientColor;
-	LinearGradient mGradientColor2;
+	LinearGradient mGradientColorShadow;
+	Shader mColorBackground;
 	RectF mRectangulo;
+	RadialGradient mGradientCircle;
 	float mWidth, mHeight;
 	
 	public MyView(Context context){
@@ -78,14 +81,17 @@ public class MyView extends View{
 	protected void onSizeChanged(int w, int h, int oldw, int oldh) {
 		mWidth    = (float)w;
 	    mHeight   = (float)h;
-	    float center_x = mWidth/2;
-	    float center_y = mHeight/2;
+	    float centerX = mWidth/2;
+	    float centerY = mHeight/2;
 	    
-        mGradientColor = new LinearGradient(0, center_y, mWidth, center_y, mStartColor, mEndColor, Shader.TileMode.MIRROR);
+        mGradientColor = new LinearGradient(0, centerY, mWidth, centerY, mStartColor, mEndColor, Shader.TileMode.MIRROR);
         mPaint.setShader(mGradientColor);
-        mGradientColor2 = new LinearGradient(center_x, 0, center_x, mHeight, Color.TRANSPARENT, mShadowColor, Shader.TileMode.MIRROR);
-        mRectangulo = new RectF(0.0f, 0.0f, mWidth, mHeight);
+        mGradientColorShadow = new LinearGradient(centerX, 0, centerX, mHeight, Color.TRANSPARENT, mShadowColor, Shader.TileMode.MIRROR);
+        mColorBackground = new LinearGradient(centerX, 0, centerX, mHeight, Color.GRAY, Color.GRAY, Shader.TileMode.MIRROR);
         
+        mRectangulo = new RectF(0.0f, (mHeight/4), mWidth, (mHeight/4)*3);
+        
+        mGradientCircle = new RadialGradient(centerX-4, centerY, mHeight, Color.WHITE, Color.TRANSPARENT, Shader.TileMode.CLAMP);
         
 		super.onSizeChanged(w, h, oldw, oldh);
 	}
@@ -96,10 +102,19 @@ public class MyView extends View{
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawRect(mRectangulo, mPaint);
-        mPaint.setShader(mGradientColor2);
+        
+        mPaint.setShader(mColorBackground);
+        canvas.drawRoundRect(mRectangulo, mHeight/4, mHeight, mPaint);
+        mRectangulo = new RectF(0.0f, (mHeight/4), mWidth/2, (mHeight/4)*3);
+
+        mPaint.setShader(mGradientColor);
+        canvas.drawRoundRect(mRectangulo, mHeight/4, mHeight, mPaint);
+        mPaint.setShader(mGradientColorShadow);
         mPaint.setAlpha(100);
-        canvas.drawRect(mRectangulo, mPaint);
+        canvas.drawRoundRect(mRectangulo, mHeight/4, mHeight, mPaint);
+        mPaint.setShader(mGradientCircle);
+        mPaint.setAlpha(150);
+        canvas.drawCircle(mWidth/2, mHeight/2, mHeight/2, mPaint);
 
     }
 
