@@ -6,17 +6,32 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
+import com.rickrsoft.drawings.views.MyProgressBar;
 import com.rickrsoft.drawings.views.PieChart;
 
 public class MainActivity extends Activity {
+	
+	MyProgressBar mProgressBar;
+	SeekBar mSeekBar;
+	ProgressBar mRegularProgress, mMiniProgress, mtunedProgress;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		Resources res = getResources();
+		mProgressBar= (MyProgressBar) findViewById(R.id.my_progressBar);
+		mProgressBar.setProgress(78);
+		mRegularProgress = (ProgressBar) findViewById(R.id.regularprogressbar);
+		mMiniProgress = (ProgressBar) findViewById(R.id.miniprogressbar);
+		mtunedProgress = (ProgressBar) findViewById(R.id.progressBar1);
+		
+		mSeekBar = (SeekBar) findViewById(R.id.seekBar1);
+		mSeekBar.setOnSeekBarChangeListener(seekBarListener);
 
 //        final PieChart pie = (PieChart) this.findViewById(R.id.Pie);
 //        pie.addItem("Agamemnon", 2, res.getColor(R.color.seafoam));
@@ -34,6 +49,30 @@ public class MainActivity extends Activity {
 		
 		
 	}
+	
+	OnSeekBarChangeListener seekBarListener = new OnSeekBarChangeListener() {
+		
+		@Override
+		public void onStopTrackingTouch(SeekBar seekBar) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onStartTrackingTouch(SeekBar seekBar) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void onProgressChanged(SeekBar seekBar, int progress,
+				boolean fromUser) {
+			mProgressBar.setProgress(progress);
+			mRegularProgress.setProgress(progress);
+			mMiniProgress.setProgress(progress);
+			mtunedProgress.setProgress(progress);
+		}
+	};
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

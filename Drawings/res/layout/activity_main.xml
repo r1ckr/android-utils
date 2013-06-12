@@ -2,19 +2,24 @@
     xmlns:custom="http://schemas.android.com/apk/res/com.rickrsoft.drawings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffffff"
     android:measureWithLargestChild="true"
     android:orientation="vertical"
     android:showDividers="beginning|middle" >
 
-    <com.rickrsoft.drawings.views.MyView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
+    <com.rickrsoft.drawings.views.MyProgressBar
+        android:id="@+id/my_progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
-        custom:endColor="#00FF00"
-        custom:leftText="Texto Izquierda"
-        custom:rightText="Texto Derecha"
-        custom:startColor="@android:color/holo_green_dark"
-        custom:variableText="Texto Variable" />
+        custom:endColor="#DA5607"
+        custom:leftText="0%"
+        custom:progress="60"
+        custom:rightText="100%"
+        custom:startColor="#efb802"
+        custom:variableText="67%" />
 
     <!--
          <com.rickrsoft.drawings.views.PieChart
@@ -34,8 +39,12 @@
             custom:labelColor="@android:color/black"
             custom:autoCenterPointerInSlice="true"
             custom:pointerRadius="4dp"
-            />
-    -->
+            />   -->
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/Reset"

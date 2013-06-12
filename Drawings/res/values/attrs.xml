@@ -17,13 +17,14 @@
         <attr name="showText" format="boolean" />
     </declare-styleable>
     
-    <declare-styleable name="MyView">
+    <declare-styleable name="MyProgressBar">
         <attr name="startColor" format="color" />
         <attr name="endColor" format="color" />
         <attr name="shadowColor" format="color" />
         <attr name="leftText" format="string" />
         <attr name="variableText" format="string" />
         <attr name="rightText" format="string" />
+        <attr name="progress" format="integer" />
     </declare-styleable>
 
 </resources>
