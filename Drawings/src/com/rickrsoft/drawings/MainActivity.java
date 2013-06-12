@@ -1,17 +1,14 @@
 package com.rickrsoft.drawings;
 
 import android.app.Activity;
-import android.content.res.Resources;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
 import com.rickrsoft.drawings.views.MyProgressBar;
-import com.rickrsoft.drawings.views.PieChart;
 
 public class MainActivity extends Activity {
 	
@@ -25,12 +22,12 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		mProgressBar= (MyProgressBar) findViewById(R.id.my_progressBar);
-		mProgressBar.setProgress(78);
 		mRegularProgress = (ProgressBar) findViewById(R.id.regularprogressbar);
 		mMiniProgress = (ProgressBar) findViewById(R.id.miniprogressbar);
 		mtunedProgress = (ProgressBar) findViewById(R.id.progressBar1);
-		
 		mSeekBar = (SeekBar) findViewById(R.id.seekBar1);
+		
+		mProgressBar.setFontStyle(Typeface.createFromAsset(getAssets(),"fonts/OpenSans-Semibold.ttf"));
 		mSeekBar.setOnSeekBarChangeListener(seekBarListener);
 
 //        final PieChart pie = (PieChart) this.findViewById(R.id.Pie);
@@ -67,6 +64,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onProgressChanged(SeekBar seekBar, int progress,
 				boolean fromUser) {
+			mProgressBar.setVariableText(progress+"%");
 			mProgressBar.setProgress(progress);
 			mRegularProgress.setProgress(progress);
 			mMiniProgress.setProgress(progress);

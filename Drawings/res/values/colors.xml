@@ -20,4 +20,9 @@
     <color name="bluegrass">#ff96c9b5</color>
     <color name="turquoise">#ff86b9b5</color>
     <color name="slate">#ff76a9b5</color>
+    
+    
+    <color name="border_grey">#dadada</color>
+    <color name="background_light">#8a8a8a</color>
+    <color name="background_dark">#3a3a3a</color>
 </resources>

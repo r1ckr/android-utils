@@ -844,7 +844,8 @@ public class PieChart extends ViewGroup {
             setLayerToSW(this);
         }
 
-        @Override
+        @SuppressWarnings("deprecation")
+		@Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
 

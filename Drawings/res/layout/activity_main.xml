@@ -39,42 +39,45 @@
             custom:labelColor="@android:color/black"
             custom:autoCenterPointerInSlice="true"
             custom:pointerRadius="4dp"
-            />   -->
-
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/Reset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/reset_button" />
+            />
+    -->
 
     <ProgressBar
         android:id="@+id/progressBar1"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progress="30"
-        android:progressDrawable="@drawable/layer_list_progressbar"
-        android:secondaryProgress="40" />
+        android:layout_marginTop="20dp"
+        android:progress="60"
+        android:progressDrawable="@drawable/layer_list_progressbar" />
 
     <com.rickrsoft.drawings.views.SaundProgressBar
         android:id="@+id/regularprogressbar"
         style="@style/Widget.ProgressBar.RegularProgressBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
-        android:progress="40" />
+        android:layout_marginTop="10dp"
+        android:progress="60" />
 
     <com.rickrsoft.drawings.views.SaundProgressBar
         android:id="@+id/miniprogressbar"
         style="@style/Widget.ProgressBar.MiniProgressBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dip"
-        android:progress="40" />
+        android:layout_marginTop="10dp"
+        android:progress="60" />
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:progress="60" />
+
+    <Button
+        android:id="@+id/Reset"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_button" />
 
 </LinearLayout>
