@@ -1,3 +1,4 @@
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res/com.rickrsoft.drawings"
     android:layout_width="match_parent"
@@ -5,12 +6,13 @@
     android:background="#ffffff"
     android:measureWithLargestChild="true"
     android:orientation="vertical"
-    android:showDividers="beginning|middle" >
+    android:showDividers="beginning|middle" 
+    android:scrollbars="vertical">
 
     <com.rickrsoft.drawings.views.MyProgressBar
         android:id="@+id/my_progressBar"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"

@@ -107,17 +107,17 @@ public class MyProgressBar extends View{
     	    //Hacemos el marco
     	    mFrameRectangle = new RectF(0.0f, 0.0f, mWidth, mBoxHeight);
 
-    	    int[] colors = {Color.WHITE, getResources().getColor(R.color.border_grey),getResources().getColor(R.color.border_grey), Color.WHITE};
-    	    float[] positions = {0.0f,0.08f, 0.4f, 1.0f};
-    	    mFrameShader = new LinearGradient(centerX, 0, centerX, mBoxHeight, colors, positions, Shader.TileMode.CLAMP);
+    	    int[] colors = {Color.WHITE, getResources().getColor(R.color.MyProgressBar_border_grey),getResources().getColor(R.color.MyProgressBar_border_grey), Color.WHITE};
+    	    float[] colorPositions = {0.0f,0.08f, 0.4f, 1.0f};
+    	    mFrameShader = new LinearGradient(centerX, 0, centerX, mBoxHeight, colors, colorPositions, Shader.TileMode.CLAMP);
     	    
     	    //Hacemos la linea del borde del marco
     	    mStrokePaint.setStyle(Paint.Style.STROKE);
     	    mStrokePaint.setStrokeWidth(2);
-    	    mStrokePaint.setColor(getResources().getColor(R.color.border_grey));
+    	    mStrokePaint.setColor(getResources().getColor(R.color.MyProgressBar_border_grey));
     	    
     	    //Hacemos el background
-    	    mBackgroundShader = new LinearGradient(mMiddlePoint, centerY, mWidth-mAnchoMarco, centerY, getResources().getColor(R.color.background_dark), getResources().getColor(R.color.background_light), Shader.TileMode.MIRROR);
+    	    mBackgroundShader = new LinearGradient(mMiddlePoint, centerY, mWidth-mAnchoMarco, centerY, getResources().getColor(R.color.MyProgressBar_background_dark), getResources().getColor(R.color.MyProgressBar_background_light), Shader.TileMode.MIRROR);
     	    mBackgroundRectangle = new RectF(mMiddlePoint, mAnchoMarco, mWidth-mAnchoMarco, mBoxHeight-mAnchoMarco);
             
     	    //Hacemos el progress
@@ -125,10 +125,10 @@ public class MyProgressBar extends View{
             mProgressRectangle = new RectF(mAnchoMarco, mAnchoMarco, mMiddlePoint, mBoxHeight-mAnchoMarco);
             
             //Hacemos la sombra interior
-            mShadowShader = new LinearGradient(mWidth/2, mAnchoMarco, mWidth/2, mBoxHeight-mAnchoMarco, new int[]{getResources().getColor(R.color.background_dark),Color.TRANSPARENT,Color.TRANSPARENT},new float[]{0.0f,0.4f,1.0f} , Shader.TileMode.MIRROR);
+            mShadowShader = new LinearGradient(mWidth/2, mAnchoMarco, mWidth/2, mBoxHeight-mAnchoMarco, new int[]{getResources().getColor(R.color.MyProgressBar_background_dark),Color.TRANSPARENT,Color.TRANSPARENT},new float[]{0.0f,0.4f,1.0f} , Shader.TileMode.MIRROR);
             mShadowRectangle = new RectF(mAnchoMarco, mAnchoMarco, mWidth-mAnchoMarco, mBoxHeight-mAnchoMarco);
             
-            mPointersCoords = new float[]{mMiddlePoint, mAnchoMarco, mMiddlePoint, mHeight-mAnchoMarco-4};
+            mPointersCoords = new float[]{mMiddlePoint, mAnchoMarco, mMiddlePoint, mBoxHeight+mAnchoMarco};
         }
     
 	@Override
@@ -136,7 +136,7 @@ public class MyProgressBar extends View{
 		//Calculamos el alto y el ancho del area
 		mWidth    = (float)w;
 		mHeight = (float)h;
-	    mBoxHeight   = ((float)h/3)*2;
+	    mBoxHeight   = (float)h*3/5;
 	    init();
 		super.onSizeChanged(w, h, oldw, oldh);
 	}
@@ -166,41 +166,47 @@ public class MyProgressBar extends View{
         
         
         //Dibujamos los marcadores:
+        float radius = mBoxHeight/15;
         //Dibujamos el marcador del medio:
         
-        mStrokePaint.setColor(getResources().getColor(R.color.background_dark));
+        mStrokePaint.setColor(getResources().getColor(R.color.MyProgressBar_background_dark));
         mStrokePaint.setStyle(Paint.Style.FILL_AND_STROKE);
         mPaintText.setColor((mEndColor));
+        
         canvas.drawLines(mPointersCoords, mStrokePaint);
-        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+4, 4.0f, mStrokePaint);
+        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+radius, radius, mStrokePaint);
         if(mMiddlePoint<(mWidth/2)){
-        	canvas.drawText(mVariableText, 0, mVariableText.length(), mPointersCoords[2]+8, mPointersCoords[3]+8, mPaintText);
+        	canvas.drawText(mVariableText, 0, mVariableText.length(), mPointersCoords[2]+(radius*2), mPointersCoords[3]+(radius*2), mPaintText);
         }else{
-        	canvas.drawText(mVariableText, 0, mVariableText.length(), mPointersCoords[2]-8-mPaintText.measureText(mVariableText), mPointersCoords[3]+8, mPaintText);
+        	canvas.drawText(mVariableText, 0, mVariableText.length(), mPointersCoords[2]-(radius*2)-mPaintText.measureText(mVariableText), mPointersCoords[3]+(radius*2), mPaintText);
         	
         }
         
         //Seteamos los colores para los marcadores de los extremos:
-        mStrokePaint.setColor(getResources().getColor(R.color.border_grey));
+        mStrokePaint.setColor(getResources().getColor(R.color.MyProgressBar_border_grey));
         mStrokePaint.setStyle(Paint.Style.STROKE);
-        mPaintText.setColor(getResources().getColor(R.color.border_grey));
+        mPaintText.setColor(getResources().getColor(R.color.MyProgressBar_border_grey));
         
         //Dibujamos el marcador de la izquierda
         mPointersCoords[0]=mAnchoMarco;
         mPointersCoords[2]=mAnchoMarco;
         canvas.drawLines(mPointersCoords, mStrokePaint);
-        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+4, 4.0f, mStrokePaint); 
-        if(mMiddlePoint>(mAnchoMarco+mPaintText.measureText(mLeftText)+8)){
-        	canvas.drawText(mLeftText, 0, mLeftText.length(), mPointersCoords[2]+8, mPointersCoords[3]+8, mPaintText);
+        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+radius, radius, mStrokePaint); 
+        if(mMiddlePoint>(mAnchoMarco+mPaintText.measureText(mLeftText)+(radius*2))){
+        	canvas.drawText(mLeftText, 0, mLeftText.length(), mPointersCoords[2]+(radius*2), mPointersCoords[3]+(radius*2), mPaintText);
+        }else{
+        	canvas.drawText(mLeftText, 0, mLeftText.length(), mPointersCoords[2], mPointersCoords[3]+(radius*2)+mPaintText.getTextSize(), mPaintText);
         }
         
         //Dibujamos el marcador de la derecha
         mPointersCoords[0]=mWidth-mAnchoMarco;
         mPointersCoords[2]=mWidth-mAnchoMarco;
         canvas.drawLines(mPointersCoords, mStrokePaint);
-        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+4, 4.0f, mStrokePaint);
-        if((mMiddlePoint)<(mPointersCoords[2]-8-mPaintText.measureText(mRightText))){
-        	canvas.drawText(mRightText, 0, mRightText.length(), mPointersCoords[2]-8-mPaintText.measureText(mRightText), mPointersCoords[3]+8, mPaintText);
+        canvas.drawCircle(mPointersCoords[2], mPointersCoords[3]+radius, radius, mStrokePaint);
+        if((mMiddlePoint)<(mPointersCoords[2]-(radius*2)-mPaintText.measureText(mRightText))){
+        	canvas.drawText(mRightText, 0, mRightText.length(), mPointersCoords[2]-(radius*2)-mPaintText.measureText(mRightText), mPointersCoords[3]+(radius*2), mPaintText);
+        }else{
+        	canvas.drawText(mRightText, 0, mRightText.length(), mPointersCoords[2]-mPaintText.measureText(mRightText), mPointersCoords[3]+(radius*2)+mPaintText.getTextSize(), mPaintText);
         }
         
         super.onDraw(canvas);
